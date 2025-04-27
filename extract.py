@@ -193,7 +193,7 @@ def generate_csv_from_pdf(pdf_file, year, race_name):
     ]
 
     generate_content_config = types.GenerateContentConfig(
-        response_mime_type="text/csv",
+        response_mime_type="text/plain",
     )
 
     # Generate content
@@ -205,6 +205,13 @@ def generate_csv_from_pdf(pdf_file, year, race_name):
 
     # Extract CSV content from response
     csv_content = response.text
+
+    csv_content = csv_content.strip()
+    if csv_content.startswith("```csv"):
+        csv_content = csv_content[6:]  # Remove ```csv
+    if csv_content.endswith("```"):
+        csv_content = csv_content[:-3]  # Remove ```
+    csv_content = csv_content.strip()
 
     # Save to CSV file
     csv_filename = f"{year}_{race_name}.csv"
