@@ -252,10 +252,10 @@ def process_race_data(year, race_id):
 
 if __name__ == "__main__":
     
-    years = [2025, 2024]
+    years = [2025]
     for year in years:
         try:
-            total_races = len(utils.get_events(year))
+            total_races = 1 #len(utils.get_events(year))
             for race in range(total_races):                
                 csv_file = process_race_data(year, race + 1)              
                 print("Waiting 15 seconds before next race...")
