@@ -65,7 +65,7 @@ def get_years():
 def get_events(year):
     events = {
         2025: [
-            "Australian Grand Prix",
+            # "Australian Grand Prix",
             "Chinese Grand Prix",
             "Japanese Grand Prix",
             "Bahrain Grand Prix",
