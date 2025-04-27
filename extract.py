@@ -193,7 +193,7 @@ def generate_csv_from_pdf(pdf_file, year, race_name):
     ]
 
     generate_content_config = types.GenerateContentConfig(
-        response_mime_type="text/plain",
+        response_mime_type="text/csv",
     )
 
     # Generate content
