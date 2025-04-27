@@ -259,7 +259,7 @@ def process_race_data(year, race_id):
 
 if __name__ == "__main__":
     
-    years = [2025, 2024]
+    years = [2023, 2022]
     for year in years:
         try:
             total_races = len(utils.get_events(year))
