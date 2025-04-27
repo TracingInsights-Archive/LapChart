@@ -1,8 +1,7 @@
 name: Run F1 Lap Chart Scraper
 
 on:
-  push:
-    branches: [ main ] 
+  
   workflow_dispatch: 
 
 jobs:
@@ -27,3 +26,12 @@ jobs:
       env:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }} 
       run: python extract.py 
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "GitHub Actions Bot"
+        git config --global user.email "actions@github.com"
+        git add *.csv
+        git commit -m "Update race data CSV files" || echo "No changes to commit"
+        git push 
+        
