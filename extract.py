@@ -251,11 +251,18 @@ def process_race_data(year, race_id):
 
 
 if __name__ == "__main__":
-    # Example usage
-    years = [2025,2024,2023,2022,2021]
+    
+    years = [2025, 2024]
     for year in years:
-        total_races = len(utils.get_events(year))        
-        for race in range(total_races):
-            csv_file = process_race_data(year, race+1)
+        try:
+            total_races = len(utils.get_events(year))
+            for race in range(total_races):                
+                csv_file = process_race_data(year, race + 1)              
+                print("Waiting 15 seconds before next race...")
+                time.sleep(15) # RPM = 5, RPD = 50 for the model
+        except Exception as e:
+             print(f"An error occurred processing year {year}: {e}")             
+
+    print("\nFinished processing all specified races.")
 
     
